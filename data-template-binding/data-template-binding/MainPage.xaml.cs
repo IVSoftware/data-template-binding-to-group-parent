@@ -97,7 +97,7 @@ namespace data_template_binding.Model
         public ICommand TappedCommand { get; private set; }
         private async void OnTapped(object o)
         {
-            var rsp = await App.Current.MainPage.DisplayPromptAsync("Edit Label", "Enter new text");
+            var rsp = await App.Current.MainPage.DisplayPromptAsync($"Edit {Name}", "Enter new name");
             if(rsp != null)
             {
                 Name = rsp;
