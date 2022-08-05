@@ -1,6 +1,6 @@
 # Bind to group header
 
-I read your code carefully and tried to make a minimal sample that still follows the essence of what you're doing. The `CheckBox` is my "expander" and the group members are shown or hidded by virtue of a binding for the `IsVisible` property on the `TappableStack`.
+I read your code carefully and tried to make a minimal sample that still follows the essence of what it does. The `CheckBox` is my "expander" and the group members are shown or hidded by virtue of a binding for the `IsVisible` property on the `TappableStack`.
 
 ![states]()
 
