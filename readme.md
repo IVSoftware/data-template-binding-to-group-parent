@@ -2,7 +2,7 @@
 
 I read your code carefully and tried to make a minimal sample that still follows the essence of what it does. The `CheckBox` is my "expander" and the group members are shown or hidded by virtue of a binding for the `IsVisible` property on the `TappableStack`.
 
-![states]()
+![states](https://github.com/IVSoftware/data-template-binding-to-group-parent/blob/master/data-template-binding/data-template-binding/ReadMe/states.png)
 
 ***
 **Groups**
