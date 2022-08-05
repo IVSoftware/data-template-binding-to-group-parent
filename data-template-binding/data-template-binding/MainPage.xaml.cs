@@ -26,14 +26,14 @@ namespace data_template_binding
         int countItem;
         public MainPageBindings()
         {
-            var group = new AthletesPerSportsList { Name = $"Group {countGroup++}" };
-            group.Add(new AthleteModel { Name = $"Item {countItem++}" });
-            group.Add(new AthleteModel { Name = $"Item {countItem++}" });
+            var group = new AthletesPerSportsList { Name = $"AthletesPerSports Group {countGroup++}" };
+            group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
+            group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
             Groups.Add(group);
 
-            group = new AthletesPerSportsList { Name = $"Group {countGroup++}" };
-            group.Add(new AthleteModel { Name = $"Item {countItem++}" });
-            group.Add(new AthleteModel { Name = $"Item {countItem++}" });
+            group = new AthletesPerSportsList { Name = $"AthletesPerSports Group {countGroup++}" };
+            group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
+            group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
             Groups.Add(group);
         }
 

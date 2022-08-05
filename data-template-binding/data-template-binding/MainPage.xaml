@@ -10,7 +10,7 @@
                     Margin="0,0,0,0">
         <CollectionView.GroupHeaderTemplate>
             <DataTemplate>
-                <Grid BackgroundColor="Cyan">
+                <Grid BackgroundColor="LightCyan">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
                     </Grid.RowDefinitions>
@@ -28,7 +28,7 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid BackgroundColor="Aquamarine">
+                <Grid BackgroundColor="Honeydew">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>

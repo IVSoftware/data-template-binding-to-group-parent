@@ -1,6 +1,6 @@
 # Bind to group header
 
-In this minimal example, the `CheckBox` is my "expander" and the group members are shown or hidden when toggled because the `CheckBox` is bound to the `IsExpanded` property of `AthletesPerSportsList` and the `IsVisible` property of the `TappableStack` is bound to it.
+In this minimal example, the `CheckBox` is my "expander" and the group members are shown or hidden when toggled because the `CheckBox` is bound to the `IsExpanded` property of `AthletesPerSportsList` and the `IsVisible` property of the `TappableStack` is bound to that.
 
 ![states](https://github.com/IVSoftware/data-template-binding-to-group-parent/blob/master/data-template-binding/data-template-binding/ReadMe/states.png)
 
@@ -98,5 +98,39 @@ The view contains groups that are instances of `AthletesPerSportsList` class wit
             }
         }
         ...
+    }
+
+***
+**Main Page Bindings**
+    
+    namespace data_template_binding
+    {
+        public partial class MainPage : ContentPage
+        {
+            public MainPage()
+            {
+                BindingContext = new MainPageBindings();
+                InitializeComponent();
+            }
+        }
+        class MainPageBindings
+        {
+            int countGroup;
+            int countItem;
+            public MainPageBindings()
+            {
+                var group = new AthletesPerSportsList { Name = $"AthletesPerSports Group {countGroup++}" };
+                group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
+                group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
+                Groups.Add(group);
+
+                group = new AthletesPerSportsList { Name = $"AthletesPerSports Group {countGroup++}" };
+                group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
+                group.Add(new AthleteModel { Name = $"Athlete {countItem++}" });
+                Groups.Add(group);
+            }
+
+            public ObservableCollection<AthletesPerSportsList> Groups { get; } = new ObservableCollection<AthletesPerSportsList>();
+        }
     }
 
