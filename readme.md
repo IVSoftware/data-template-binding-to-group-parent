@@ -7,7 +7,7 @@ I read your code carefully and tried to make a minimal sample that still follows
 ***
 **XAML**
 
-The XAML is straightforware thanks to the addition of a `Parent` property to the `AthleteModel`.
+The XAML is straightforward thanks to the addition of a `Parent` property to the `AthleteModel`.
 
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
