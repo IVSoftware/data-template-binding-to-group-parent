@@ -1,59 +1,13 @@
 # Bind to group header
 
-I read your code carefully and tried to make a minimal sample that still follows the essence of what it does. The `CheckBox` is my "expander" and the group members are shown or hidded by virtue of a binding for the `IsVisible` property on the `TappableStack`.
+I read your code carefully and tried to make a minimal sample that still follows the essence of what it does. The `CheckBox` is my "expander" and the group members are shown or hidden when toggled because the `CheckBox` is bound to the `IsExpanded` property of `AthletesPerSportsList` and the `IsVisible` property of the `TappableStack` is bound to it.
 
 ![states](https://github.com/IVSoftware/data-template-binding-to-group-parent/blob/master/data-template-binding/data-template-binding/ReadMe/states.png)
 
 ***
-**Groups**
-The view contains groups that are instances of `AthletesPerSportsList` class with a bindable `IsExpanded` property and a `new` version of the `Add` method that attaches itself as `Parent` to any `AthleteModel` added to the list.
-
-    class AthletesPerSportsList : ObservableCollection<AthleteModel>, INotifyPropertyChanged
-    {
-        public new void Add(AthleteModel baseModel)
-        {
-            baseModel.Parent = this;
-            base.Add(baseModel);
-        }
-        bool _IsExpanded = false;
-        public bool IsExpanded
-        {
-            get => _IsExpanded;
-            set
-            {
-                if (!Equals(_IsExpanded, value))
-                {
-                    _IsExpanded = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        ...
-    }
-
-***
-**Items**
-
-The `AthleteModel` now has the `Parent` property and also the `TappedCommand` in response to a tap on the `Label`.
-
-    class AthleteModel : INotifyPropertyChanged
-    {
-        public AthletesPerSportsList Parent { get; internal set; }
-
-        public ICommand TappedCommand { get; private set; }
-        private async void OnTapped(object o)
-        {
-            var rsp = await App.Current.MainPage.DisplayPromptAsync("Edit Label", "Enter new text");
-            if(rsp != null)
-            {
-                Name = rsp;
-            }
-        }
-        public object TappedCommandParameter { get; set; }
-        ...
-    }
-
 **XAML**
+
+The XAML is straightforware thanks to the addition of a `Parent` property to the `AthleteModel`.
 
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -94,4 +48,55 @@ The `AthleteModel` now has the `Parent` property and also the `TappedCommand` in
             </CollectionView.ItemTemplate>
         </CollectionView>
     </ContentPage>
+
+    
+
+***
+**Items**
+
+The `AthleteModel` now has the `Parent` property of type `AthletesPerSportsList` and also the `TappedCommand` in response to a tap on the `Label`.
+
+    class AthleteModel : INotifyPropertyChanged
+    {
+        public AthletesPerSportsList Parent { get; internal set; }
+
+        public ICommand TappedCommand { get; private set; }
+        private async void OnTapped(object o)
+        {
+            var rsp = await App.Current.MainPage.DisplayPromptAsync("Edit Label", "Enter new text");
+            if(rsp != null)
+            {
+                Name = rsp;
+            }
+        }
+        public object TappedCommandParameter { get; set; }
+        ...
+    }
+
+***
+**Groups**
+The view contains groups that are instances of `AthletesPerSportsList` class with a bindable `IsExpanded` property and a `new` version of the `Add` method that attaches itself as `Parent` to any `AthleteModel` added to the list.
+
+    class AthletesPerSportsList : ObservableCollection<AthleteModel>, INotifyPropertyChanged
+    {
+        public new void Add(AthleteModel baseModel)
+        {
+            baseModel.Parent = this;
+            base.Add(baseModel);
+        }
+        bool _IsExpanded = false;
+        public bool IsExpanded
+        {
+            get => _IsExpanded;
+            set
+            {
+                if (!Equals(_IsExpanded, value))
+                {
+                    _IsExpanded = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        ...
+    }
 
