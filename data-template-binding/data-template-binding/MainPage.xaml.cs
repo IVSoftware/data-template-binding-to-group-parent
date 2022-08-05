@@ -45,7 +45,6 @@ namespace data_template_binding.Model
 { 
     class AthletesPerSportsList : ObservableCollection<AthleteModel>, INotifyPropertyChanged
     {
-        public AthletesPerSportsList() => base.PropertyChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
         public new void Add(AthleteModel baseModel)
         {
             baseModel.Parent = this;
@@ -64,6 +63,7 @@ namespace data_template_binding.Model
                 }
             }
         }
+        public AthletesPerSportsList() => base.PropertyChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
         string _Name = string.Empty;
         public string Name
         {
