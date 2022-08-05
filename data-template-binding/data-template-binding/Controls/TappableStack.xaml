@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="data_template_binding.Controls.TappableStack">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Text="{Binding Name}"
+               Grid.Column="1"
+               VerticalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TappedCommand}"
+                                      CommandParameter="{Binding}" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Grid>
+</ContentView>
