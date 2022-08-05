@@ -1,6 +1,6 @@
 # Bind to group header
 
-I read your code carefully and tried to make a minimal sample that still follows the essence of what it does. The `CheckBox` is my "expander" and the group members are shown or hidden when toggled because the `CheckBox` is bound to the `IsExpanded` property of `AthletesPerSportsList` and the `IsVisible` property of the `TappableStack` is bound to it.
+In this minimal example, the `CheckBox` is my "expander" and the group members are shown or hidden when toggled because the `CheckBox` is bound to the `IsExpanded` property of `AthletesPerSportsList` and the `IsVisible` property of the `TappableStack` is bound to it.
 
 ![states](https://github.com/IVSoftware/data-template-binding-to-group-parent/blob/master/data-template-binding/data-template-binding/ReadMe/states.png)
 
